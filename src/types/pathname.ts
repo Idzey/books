@@ -1,0 +1,1 @@
+export type PathnameType = "/" | "/favorites" | "/book/$bookId";

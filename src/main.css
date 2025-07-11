@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+:root {
+    --white: #ffffff;
+    --gray-light: #5C6970;
+    --gray-main: #5C6970;
+    --gray-dark: #2E3438;
+    --blue-light: #3625FF;
+    --blue-dark: #0C0099;
+    --red: #D35151;
+}
+
+@theme {
+    --font-inter: 'Inter', sans-serif;
+    --color-white: var(--white);
+    --color-gray-light: var(--gray-light);
+    --color-gray-main: var(--gray-main);
+    --color-gray-dark: var(--gray-dark);
+    --color-blue-light: var(--blue-light);
+    --color-blue-dark: var(--blue-dark);
+    --color-red: var(--red);
+}
