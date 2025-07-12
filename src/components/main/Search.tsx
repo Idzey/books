@@ -9,6 +9,16 @@ export default function Search({ search, pathname }: { search: string | null, pa
   const [debouncedValue, setDebouncedValue] = useState(search || "");
 
   useEffect(() => {
+    setValue(search || "");
+    setDebouncedValue(search || "");
+  }, [search]);
+
+  useEffect(() => {
+    setValue("");
+    setDebouncedValue("");
+  }, [pathname])
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedValue(value);
     }, 500);

@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FavoritesIndexRouteImport } from './routes/favorites/index'
-import { Route as FavoritesFavoritesRouteImport } from './routes/favorites/favorites'
 import { Route as BookBookIdRouteImport } from './routes/book/$bookId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -24,11 +23,6 @@ const FavoritesIndexRoute = FavoritesIndexRouteImport.update({
   path: '/favorites/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FavoritesFavoritesRoute = FavoritesFavoritesRouteImport.update({
-  id: '/favorites/favorites',
-  path: '/favorites/favorites',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BookBookIdRoute = BookBookIdRouteImport.update({
   id: '/book/$bookId',
   path: '/book/$bookId',
@@ -38,39 +32,30 @@ const BookBookIdRoute = BookBookIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book/$bookId': typeof BookBookIdRoute
-  '/favorites/favorites': typeof FavoritesFavoritesRoute
   '/favorites': typeof FavoritesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book/$bookId': typeof BookBookIdRoute
-  '/favorites/favorites': typeof FavoritesFavoritesRoute
   '/favorites': typeof FavoritesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/book/$bookId': typeof BookBookIdRoute
-  '/favorites/favorites': typeof FavoritesFavoritesRoute
   '/favorites/': typeof FavoritesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/book/$bookId' | '/favorites/favorites' | '/favorites'
+  fullPaths: '/' | '/book/$bookId' | '/favorites'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/book/$bookId' | '/favorites/favorites' | '/favorites'
-  id:
-    | '__root__'
-    | '/'
-    | '/book/$bookId'
-    | '/favorites/favorites'
-    | '/favorites/'
+  to: '/' | '/book/$bookId' | '/favorites'
+  id: '__root__' | '/' | '/book/$bookId' | '/favorites/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookBookIdRoute: typeof BookBookIdRoute
-  FavoritesFavoritesRoute: typeof FavoritesFavoritesRoute
   FavoritesIndexRoute: typeof FavoritesIndexRoute
 }
 
@@ -90,13 +75,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FavoritesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/favorites/favorites': {
-      id: '/favorites/favorites'
-      path: '/favorites/favorites'
-      fullPath: '/favorites/favorites'
-      preLoaderRoute: typeof FavoritesFavoritesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/book/$bookId': {
       id: '/book/$bookId'
       path: '/book/$bookId'
@@ -110,7 +88,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookBookIdRoute: BookBookIdRoute,
-  FavoritesFavoritesRoute: FavoritesFavoritesRoute,
   FavoritesIndexRoute: FavoritesIndexRoute,
 }
 export const routeTree = rootRouteImport
